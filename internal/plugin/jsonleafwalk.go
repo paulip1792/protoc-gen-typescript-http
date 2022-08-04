@@ -1,7 +1,7 @@
 package plugin
 
 import (
-	"go.einride.tech/protoc-gen-typescript-http/internal/httprule"
+	"github.com/paulip1792/protoc-gen-typescript-http/internal/httprule"
 	"google.golang.org/protobuf/reflect/protoreflect"
 )
 

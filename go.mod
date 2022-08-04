@@ -1,4 +1,4 @@
-module go.einride.tech/protoc-gen-typescript-http
+module github.com/paulip1792/protoc-gen-typescript-http
 
 go 1.17
 
