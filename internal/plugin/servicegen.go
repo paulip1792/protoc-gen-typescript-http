@@ -228,7 +228,7 @@ func jsonPathSegments(path httprule.FieldPath, message protoreflect.MessageDescr
 	segs := make([]string, len(path))
 	for i, p := range path {
 		field := message.Fields().ByName(protoreflect.Name(p))
-		segs[i] = field.JSONName()
+		segs[i] = GetFieldName(field)
 		if i < len(path) {
 			message = field.Message()
 		}

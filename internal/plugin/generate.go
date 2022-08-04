@@ -33,6 +33,23 @@ func Generate(request *pluginpb.CodeGeneratorRequest) (*pluginpb.CodeGeneratorRe
 		packaged[file.Package()] = append(packaged[file.Package()], file)
 	}
 
+	if request.GetParameter() != "" {
+		params := strings.Split(request.GetParameter(), ",")
+		for _, param := range params {
+			keyval := strings.Split(param, "=")
+			if len(keyval) != 2 {
+				continue
+			}
+			k, v := keyval[0], keyval[1]
+			switch k {
+			case "naming":
+				if v == "proto" {
+					DefaultGeneratorOptions.UseProtoNames = true
+				}
+			}
+		}
+	}
+
 	var res pluginpb.CodeGeneratorResponse
 	for pkg, files := range packaged {
 		var index codegen.File
